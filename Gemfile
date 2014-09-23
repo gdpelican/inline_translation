@@ -6,5 +6,6 @@ gemspec
 gem 'rails', '~> 4.1.0'
 
 group :test do
+  gem 'codeclimate-test-reporter', require: nil
   gem 'byebug'
 end
