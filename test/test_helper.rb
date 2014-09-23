@@ -16,12 +16,13 @@ def setup_destination
   setup :prepare_destination
 end
 
-def setup_model
-  Temping.create :test_model do 
-    with_columns do |t| 
-      t.integer :id_alt
-      t.string :column, :language, :language_alt 
-    end 
+def setup_model(model = :test_model)
+  unless Object.const_defined?(model.to_s.split("_").collect(&:capitalize).join)
+    Temping.create model do 
+      with_columns do |t| 
+        t.integer :id_alt
+        t.string :column, :language, :language_alt 
+      end 
+    end
   end
-  TestModel.class_eval "include Babbel::IsTranslatable"
 end
