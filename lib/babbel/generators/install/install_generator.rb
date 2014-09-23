@@ -18,7 +18,6 @@ module Babbel
         @previous_migration_nr ||= Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
         @previous_migration_nr += 1
       end
-
     end
   end
 end
