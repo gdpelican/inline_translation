@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'babbel/generators/install/install_generator'
 
 class BabbelGeneratorInstallTest < Rails::Generators::TestCase
   tests Babbel::Generators::InstallGenerator

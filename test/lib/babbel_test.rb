@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'babbel'
 
 class BabbelTest < Rails::Generators::TestCase
   tests Babbel
