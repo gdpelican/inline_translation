@@ -8,6 +8,16 @@ class IsTranslatableTest < Rails::Generators::TestCase
   setup_destination
   setup_model
 
+  TestModel.class_eval "include Babbel::IsTranslatable"
+
+  test "includes Translatable" do
+    setup_model :alt_test_model 
+    AltTestModel.class_eval "include Babbel::IsTranslatable"
+    assert !AltTestModel.included_modules.include?(Babbel::Translatable)
+    AltTestModel.class_eval "is_translatable on: :column"
+    assert  AltTestModel.included_modules.include?(Babbel::Translatable)
+  end
+
   test "defines a translatable_fields class method" do
     TestModel.class_eval "is_translatable on: :column"
     assert_equal TestModel.translatable_fields, [:column]
