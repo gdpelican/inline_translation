@@ -15,7 +15,7 @@ require 'rails/generators/test_case'
 require 'byebug'
 
 def setup_destination
-  destination File.expand_path '../../tmp', __FILE__
+  destination File.expand_path '../../../tmp', __FILE__
   setup :prepare_destination
 end
 

@@ -2,6 +2,8 @@ require 'test_helper'
 require 'babbel/translators/base'
 require 'babbel/translators/bing'
 
-class BabbelTest < MiniTest::Spec
+class BingTest < MiniTest::Spec
+  describe Babbel::Translators::Bing do
 
+  end
 end
