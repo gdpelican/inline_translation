@@ -3,60 +3,63 @@ require 'babbel/concerns/is_translatable'
 require 'babbel/concerns/translatable'
 require 'byebug'
 
-class IsTranslatableTest < Rails::Generators::TestCase
-  tests Babbel::IsTranslatable
-  setup_destination
-  setup_model
+class IsTranslatableTest < MiniTest::Spec
+  describe Babbel::Concerns::IsTranslatable do
 
-  TestModel.class_eval "include Babbel::IsTranslatable"
+    before do
+      setup_model :concern_model
+      ConcernModel.define_singleton_method(:find_alt) { |id| "found #{id}!" }
+    end
 
-  test "includes Translatable" do
-    setup_model :alt_test_model 
-    AltTestModel.class_eval "include Babbel::IsTranslatable"
-    assert !AltTestModel.included_modules.include?(Babbel::Translatable)
-    AltTestModel.class_eval "is_translatable on: :column"
-    assert  AltTestModel.included_modules.include?(Babbel::Translatable)
-  end
+    it "includes Translatable" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2]"
+      assert ConcernModel.included_modules.include?(Babbel::Concerns::Translatable)
+    end
 
-  test "defines a translatable_fields class method" do
-    TestModel.class_eval "is_translatable on: :column"
-    assert_equal TestModel.translatable_fields, [:column]
-  end
+    it "defines a translatable_fields class method" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2]"
+      assert_equal ConcernModel.translatable_fields, [:column1, :column2]
+    end
 
-  test "defines a custom get_instance class method" do
-    TestModel.class_eval "is_translatable on: :column"
-    model = TestModel.create
-    assert_equal TestModel.get_instance(model.id), model
-  end
+    it "defines a single translatable_field correctly" do
+      ConcernModel.class_eval "is_translatable on: :column1"
+      assert_equal ConcernModel.translatable_fields, [:column1]
+    end
 
-  test "defines a get_instance class method as :find by default" do
-    TestModel.define_singleton_method(:find_alt) { |id| "found #{id}!" }
-    TestModel.class_eval "is_translatable on: :column, load_via: :find_alt"
-    assert_equal TestModel.get_instance(42), "found 42!"
-  end
+    it "defines a custom get_instance class method" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2], load_via: :find_alt"
+      assert_equal ConcernModel.get_instance(42), ConcernModel.find_alt(42)
+    end
 
-  test "defines an id_field method as :id by default" do
-    TestModel.class_eval "is_translatable on: :column"
-    model = TestModel.new id: 42
-    assert_equal model.id, model.id_field
-  end
+    it "defines a get_instance class method as :find by default" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2]"
+      model = ConcernModel.create
+      assert_equal ConcernModel.get_instance(model.id), ConcernModel.find(model.id)
+    end
 
-  test "defines a custom id_field method" do
-    TestModel.class_eval "is_translatable on: :column, id_field: :id_alt"
-    model = TestModel.new id_alt: 42
-    assert_equal model.id_alt, model.id_field
-  end
+    it "defines an id_field method as :id by default" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2]"
+      model = ConcernModel.new id: 42
+      assert_equal model.id_field, model.id
+    end
 
-  test "defines a language_field method as :language by default" do
-    TestModel.class_eval "is_translatable on: :column"
-    model = TestModel.new language: :en
-    assert_equal model.language, model.language_field
-  end
+    it "defines a custom id_field method" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2], id_field: :id_alt"
+      model = ConcernModel.new id_alt: 42
+      assert_equal model.id_field, model.id_alt
+    end
 
-  test "defines a custom language_field method" do
-    TestModel.class_eval "is_translatable on: :column, language_field: :language_alt"
-    model = TestModel.new language_alt: :en
-    assert_equal model.language_alt, model.language_field
+    it "defines a language_field method as :language by default" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2]"
+      model = ConcernModel.new language: :en
+      assert_equal model.language_field, model.language
+    end
+
+    it "defines a custom language_field method" do
+      ConcernModel.class_eval "is_translatable on: [:column1, :column2], language_field: :language_alt"
+      model = ConcernModel.new language_alt: :en
+      assert_equal model.language_field, model.language_alt
+    end
   end
 
 end

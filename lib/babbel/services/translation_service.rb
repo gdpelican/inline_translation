@@ -1,13 +1,15 @@
 module Babbel
   module Services
     class TranslationService
+      attr_reader :translator
+
       def initialize(translator)
         raise InvalidTranslatorError.new unless translator.ready?
         @translator = translator
       end
 
       def translate(translatable, to: I18n.locale)
-        model.class.translatable_fields.map { |field| translate_field(translatable, field, to: to) }
+        translatable.class.translatable_fields.map { |field| translate_field(translatable, field, to: to) }
         translatable.save
       end
 
@@ -16,7 +18,7 @@ module Babbel
           field: field,
           language: to,
           translation: @translator.translate(translatable.send(field), from: translatable.language_field, to: to)
-        ) if perform_translation?
+        ) if perform_translation?(translatable, field, to)
       end
 
       private

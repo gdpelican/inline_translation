@@ -1,18 +1,22 @@
 require 'test_helper'
 require 'babbel/concerns/translatable'
 
-class TranslatableTest < Rails::Generators::TestCase
-  tests Babbel::Translatable
-  setup_destination
-  setup_model
+require 'byebug'
 
-  TestModel.class_eval "include Babbel::Translatable"
+class TranslatableTest < MiniTest::Spec
+  describe Babbel::Concerns::Translatable do
 
-  test "has many translations" do
-    model = TestModel.new
-  end
+    before do
+      setup_model :concern_model
+      include_translatable ConcernModel
+    end
 
-  test "destroys translations after update" do
+    it "has_many translations" do
+    end
+
+    it "destroys translations after update" do
+    end
+
   end
 
 end

@@ -1,11 +1,10 @@
 require 'test_helper'
 require 'babbel'
 
-class BabbelTest < Rails::Generators::TestCase
-  tests Babbel
-  setup_destination
-
-  test "returns the correct version" do
-    assert_equal Babbel::VERSION, '0.0.1'
+class BabbelTest < MiniTest::Spec
+  describe "Babbel version" do
+    it "return the correct version" do
+      Babbel::VERSION.must_equal '0.0.1'
+    end
   end
 end
