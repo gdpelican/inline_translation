@@ -47,6 +47,11 @@ def setup_translation
   end
 end
 
+def setup_bing_translator_env
+  ENV['BING_TRANSLATOR_APP_ID'] = 'set'
+  ENV['BING_TRANSLATOR_SECRET'] = 'set'
+end
+
 def include_is_translatable(model)
   model.class_eval "include Babbel::Concerns::IsTranslatable"
 end

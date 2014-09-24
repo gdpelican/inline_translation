@@ -9,8 +9,7 @@ class BingTest < MiniTest::Spec
     let(:translator) { Babbel::Translators::Bing.new }
 
     before do
-      ENV['BING_TRANSLATOR_APP_ID'] = 'set'
-      ENV['BING_TRANSLATOR_SECRET'] = 'set'
+      setup_bing_translator_env
     end
 
     it "initializes a BingTranslator" do 

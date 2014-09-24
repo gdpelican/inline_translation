@@ -3,7 +3,7 @@ module Babbel
   	class Base
 
       def ready?
-        raise NotImplementedError.new
+        false
       end
 
   	  def can_translate?(translatable, from: I18n.locale)
