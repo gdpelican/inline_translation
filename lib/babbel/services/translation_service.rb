@@ -3,7 +3,7 @@ module Babbel
     class TranslationService
       attr_reader :translator
 
-      def initialize(translator = Babbel::TRANSLATOR)
+      def initialize(translator = Babbel.translator)
         raise InvalidTranslatorError.new unless translator.ready?
         @translator = translator
       end

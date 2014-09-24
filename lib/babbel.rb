@@ -1,4 +1,11 @@
 module Babbel
   VERSION = "0.0.1"
-  TRANSLATOR = Babbel::Translators::Bing
+
+  def self.translator=(translator)
+    @@translator = translator
+  end
+
+  def self.translator
+    @@translator
+  end
 end
