@@ -1,6 +1,7 @@
 module Babbel
   module Translators
   	class Bing < Base
+      attr_reader :translator
 
       def initialize
         @translator = BingTranslator.new ENV['BING_TRANSLATOR_APP_ID'], ENV['BING_TRANSLATOR_SECRET']
