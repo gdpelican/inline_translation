@@ -3,11 +3,13 @@ require 'active_support'
 module Babbel
   extend ActiveSupport::Autoload
 
-  autoload :TranslationsController
-
   module Concerns
-    autoload :IsTranslatable,     'babbel/concerns/is_translatable'
+    autoload :ActsAsTranslatable, 'babbel/concerns/acts_as_translatable'
     autoload :Translatable,       'babbel/concerns/translatable'
+  end
+
+  module Controllers
+    autoload :TranslationsController, 'controllers/translations_controller'
   end
 
   module Generators

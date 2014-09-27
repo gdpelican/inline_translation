@@ -1,10 +1,10 @@
 module Babbel
   module Concerns
-    module IsTranslatable
+    module ActsAsTranslatable
       extend ActiveSupport::Concern
       
       module ClassMethods
-        def is_translatable(on: [], load_via: :find, id_field: :id, language_field: :language)
+        def acts_as_translatable(on: [], load_via: :find, id_field: :id, language_field: :language)
           include Translatable
           define_singleton_method :translatable_fields, -> { Array on }
           define_singleton_method :get_instance,        ->(id) { send load_via, id }

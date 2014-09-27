@@ -11,7 +11,7 @@ class BabbelTranslationServiceTest < MiniTest::Spec
   let(:translatable) { ServiceModel.new column1: "translatable text", column2: "more text", language: :en }
 
   before do
-    ServiceModel.class_eval "is_translatable on: [:column1, :column2]"
+    ServiceModel.class_eval "acts_as_translatable on: [:column1, :column2]"
     include_translatable ServiceModel
     translator.stubs(:ready?).returns(true)
     translator.stubs(:can_translate?).returns(true)

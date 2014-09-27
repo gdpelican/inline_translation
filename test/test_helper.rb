@@ -13,6 +13,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/mini_test'
 require 'rails/generators/test_case'
+require 'fixtures/application_controller'
 
 require 'babbel'
 
@@ -30,7 +31,7 @@ def setup_model(model = :test_model)
         t.string :column1, :column2, :language, :language_alt 
       end
     end
-    include_is_translatable Object.const_get(constantized)
+    include_acts_as_translatable Object.const_get(constantized)
   end
 end
 
@@ -54,8 +55,8 @@ def setup_bing_translator_env
   ENV['BING_TRANSLATOR_SECRET'] = 'set'
 end
 
-def include_is_translatable(model)
-  model.class_eval "include Babbel::Concerns::IsTranslatable"
+def include_acts_as_translatable(model)
+  model.class_eval "include Babbel::Concerns::ActsAsTranslatable"
 end
 
 def include_translatable(model)

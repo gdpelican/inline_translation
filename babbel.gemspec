@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.test_files    = Dir["test/**/*.rb"]
-  spec.require_paths = ["lib", "test"]
+  spec.require_paths = ["app", "lib", "test"]
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
