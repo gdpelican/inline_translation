@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'babbel'
 
 class BabbelTest < MiniTest::Spec
   describe "Babbel version" do

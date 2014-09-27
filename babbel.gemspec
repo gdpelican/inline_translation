@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'babbel'
+require 'babbel/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "babbel"
@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://www.github.com/gdpelican/babbel"
   spec.license       = "MIT"
 
-  spec.files         = Dir["lib/**/*.rb"]
   spec.test_files    = Dir["test/**/*.rb"]
   spec.require_paths = ["lib", "test"]
 

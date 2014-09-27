@@ -1,7 +1,4 @@
 require 'test_helper'
-require 'babbel/concerns/is_translatable'
-require 'babbel/concerns/translatable'
-require 'byebug'
 
 class IsTranslatableTest < MiniTest::Spec
   describe Babbel::Concerns::IsTranslatable do

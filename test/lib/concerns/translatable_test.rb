@@ -1,7 +1,4 @@
 require 'test_helper'
-require 'babbel/concerns/translatable'
-
-require 'byebug'
 
 class TranslatableTest < MiniTest::Spec
   describe Babbel::Concerns::Translatable do
@@ -23,7 +20,7 @@ class TranslatableTest < MiniTest::Spec
       model.save
       assert_equal model.reload.translations.size, 1
 
-      model.column1 = "changed text"
+      model.update! column1: "changed text"
       model.save
 
       assert_equal model.reload.translations.size, 0      

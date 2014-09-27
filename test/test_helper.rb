@@ -3,6 +3,7 @@ ENV['RAILS_ENV'] = 'test'
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+require 'byebug'
 require 'bundler/setup'
 require 'active_record'
 require 'temping'
@@ -12,7 +13,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/mini_test'
 require 'rails/generators/test_case'
-require 'byebug'
+
+require 'babbel'
 
 def setup_destination
   destination File.expand_path '../../../tmp', __FILE__
