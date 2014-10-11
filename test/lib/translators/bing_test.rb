@@ -3,7 +3,7 @@ require 'babbel/translators/base'
 require 'babbel/translators/bing'
 require 'bing_translator'
 
-class BingTest < MiniTest::Spec
+class BingTest < UnitTest
   describe Babbel::Translators::Bing do
 
     let(:translator) { Babbel::Translators::Bing.new }

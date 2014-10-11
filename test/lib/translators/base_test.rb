@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'babbel/translators/base'
 
-class BaseTest < MiniTest::Spec
+class BaseTest < UnitTest
   describe Babbel::Translators::Base do
 
     let(:translator) { Babbel::Translators::Base.new }

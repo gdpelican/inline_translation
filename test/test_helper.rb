@@ -13,7 +13,12 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/mini_test'
 require 'rails/generators/test_case'
+
+require 'fixtures/rails'
 require 'fixtures/application_controller'
+
+require 'test_types/unit_test'
+require 'test_types/controller_test'
 
 require 'babbel'
 

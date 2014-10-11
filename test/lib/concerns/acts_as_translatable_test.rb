@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActsAsTranslatableTest < MiniTest::Spec
+class ActsAsTranslatableTest < UnitTest
   describe Babbel::Concerns::ActsAsTranslatable do
 
     before do

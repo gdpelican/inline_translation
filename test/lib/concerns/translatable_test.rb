@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TranslatableTest < MiniTest::Spec
+class TranslatableTest < UnitTest
   describe Babbel::Concerns::Translatable do
 
     let(:model) { ConcernModel.new column1: "test text" }

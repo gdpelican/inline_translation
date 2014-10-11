@@ -2,7 +2,7 @@ require 'test_helper'
 require 'babbel/services/translation_service'
 require 'babbel/models/translation'
 
-class BabbelTranslationServiceTest < MiniTest::Spec
+class BabbelTranslationServiceTest < UnitTest
   setup_model :service_model
   setup_translation
 
