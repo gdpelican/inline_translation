@@ -1,6 +1,7 @@
 module Babbel
   module Translators
   	class Base
+      attr_reader :translator
 
       def ready?
         false

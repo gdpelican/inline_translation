@@ -3,6 +3,8 @@ require 'active_support'
 module Babbel
   extend ActiveSupport::Autoload
 
+  cattr_accessor :translator
+
   module Concerns
     autoload :ActsAsTranslatable, 'babbel/concerns/acts_as_translatable'
     autoload :Translatable,       'babbel/concerns/translatable'
@@ -27,13 +29,9 @@ module Babbel
   module Translators
     autoload :Base,               'babbel/translators/base'
     autoload :Bing,               'babbel/translators/bing'
+    autoload :Null,               'babbel/translators/null'
   end
 
-  def self.translator=(translator)
-    @@translator = translator
-  end
+  self.translator ||= Translators::Null.new
 
-  def self.translator
-    @@translator
-  end
 end
