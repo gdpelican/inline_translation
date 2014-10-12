@@ -31,7 +31,7 @@ module Babbel
       end
 
       def instance
-        @instance ||= params[:translatable_type].classify.constantize.get_instance params[:translatable_id]
+        @instance ||= params[:translatable_type].classify.constantize.get_instance params[:translatable_id] rescue nil
       end
 
       def to_language

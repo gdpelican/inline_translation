@@ -9,6 +9,10 @@ module Babbel
       end
 
       def translate(translatable, to: I18n.locale)
+        translate! translatable, to: I18n.locale rescue false
+      end
+
+      def translate!(translatable, to: I18n.locale)
         translatable.class.translatable_fields.map { |field| translate_field(translatable, field, to: to) }
         translatable.save
       end
