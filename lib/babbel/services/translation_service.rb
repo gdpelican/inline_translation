@@ -22,14 +22,7 @@ module Babbel
           field: field,
           language: to,
           translation: @translator.translate(translatable.send(field), from: translatable.language_field, to: to)
-        ) if perform_translation?(translatable, field, to)
-      end
-
-      private
-
-      def perform_translation?(translatable, field, to)
-        @translator.can_translate?(translatable) && 
-        translatable.translations.where(field: field, language: to).empty?
+        ) if @translator.can_translate?(translatable, field, to)
       end
 
     end
