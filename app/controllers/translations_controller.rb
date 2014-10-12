@@ -22,6 +22,10 @@ module Babbel
 
       private
 
+      def self.controller_path
+        :translations
+      end
+
       def service
         @service ||= Babbel::Services::TranslationService.new
       end

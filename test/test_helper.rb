@@ -9,13 +9,15 @@ require 'active_record'
 require 'temping'
 ActiveRecord::Base.establish_connection adapter: :sqlite3, database: ':memory:'
 
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'mocha/mini_test'
-require 'rails/generators/test_case'
+require 'action_controller'
 
 require 'fixtures/rails'
 require 'fixtures/application_controller'
+
+require 'minitest/autorun'
+require 'minitest/pride'
+require 'mocha/mini_test'
+require 'rails/test_help'
 
 require 'test_types/unit_test'
 require 'test_types/controller_test'
