@@ -9,7 +9,7 @@ module Babbel
       end
 
       def translate(translatable, to: I18n.locale)
-        translate! translatable, to: I18n.locale rescue false
+        translate!(translatable, to: I18n.locale) rescue false
       end
 
       def translate!(translatable, to: I18n.locale)

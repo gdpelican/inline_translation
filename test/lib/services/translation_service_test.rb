@@ -28,6 +28,19 @@ class BabbelTranslationServiceTest < UnitTest
     end
   end
 
+  describe "invalid translator error" do
+    it "has an error message" do
+      assert_match /Unable to instantiate translator/, Babbel::Services::InvalidTranslatorError.new.to_s
+    end
+  end
+
+  describe "translate" do
+    it "returns the results of translate!" do
+      service.stubs(:translate!).returns("translation result")
+      assert_equal service.translate(translatable), "translation result"
+    end
+  end
+
   describe "translate!" do
     it "builds all translations using translate_field" do
       service.translate!(translatable)
