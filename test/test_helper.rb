@@ -21,6 +21,7 @@ require 'rails/test_help'
 
 require 'test_types/unit_test'
 require 'test_types/controller_test'
+require 'test_types/integration_test'
 
 require 'babbel'
 
