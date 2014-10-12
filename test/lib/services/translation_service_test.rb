@@ -28,14 +28,15 @@ class BabbelTranslationServiceTest < UnitTest
     end
   end
 
-  describe "translate" do
+  describe "translate!" do
     it "builds all translations using translate_field" do
-      service.translate(translatable)
+      service.translate!(translatable)
       assert_equal translatable.translations.size, 2
     end
 
     it "does not build an invalid translation" do
       translator.stubs(:can_translate?).returns(false)
+      service.translate!(translatable)
       assert_equal translatable.translations.size, 0
     end
   end
