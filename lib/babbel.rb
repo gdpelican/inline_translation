@@ -18,6 +18,10 @@ module Babbel
     autoload :InstallGenerator,   'babbel/generators/install/install_generator'
   end
 
+  module Helpers
+    autoload :TranslationsHelper, 'babbel/helpers/translations_helper'
+  end
+
   module Models
     autoload :Translation,        'babbel/models/translation'
   end
