@@ -5,7 +5,8 @@ class BaseTest < UnitTest
   describe Babbel::Translators::Base do
     setup_model :translator_model
 
-    let(:translator) { Babbel::Translators::Base.new }
+    let(:translator_class) { Babbel::Translators::Base }
+    let(:translator) { translator_class.new }
     let(:translatable) { TranslatorModel.new column1: "column one", language: :en }
 
     setup do
@@ -13,7 +14,7 @@ class BaseTest < UnitTest
     end
 
     it "returns false on ready?" do
-      refute translator.ready?
+      refute translator_class.ready?
     end
 
     describe ".can_translate?" do
@@ -46,16 +47,16 @@ class BaseTest < UnitTest
       end
 
       it "returns false if the field is not found on translatable" do
-        translator.stubs(:ready?).returns(:true)
+        translator_class.stubs(:ready?).returns(:true)
         refute translator.can_translate? translatable, :notacolumn, :fr
       end
 
       it "returns true otherwise" do
-        translator.stubs(:ready?).returns(:true)
+        translator_class.stubs(:ready?).returns(:true)
         assert translator.can_translate? translatable, :column1, :fr
       end
     end
-    
+
     it "raises an error on translate" do
       assert_raises NotImplementedError do translator.translate(nil) end
     end

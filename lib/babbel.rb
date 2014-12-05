@@ -37,6 +37,6 @@ module Babbel
     autoload :Null,               'babbel/translators/null'
   end
 
-  self.translator ||= Translators::Null.new
+  self.translator ||= Translators::Null
 
 end

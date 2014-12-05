@@ -6,24 +6,25 @@ class BabbelTranslationServiceTest < UnitTest
   setup_model :service_model
   setup_translation
 
-  let(:translator)   { Babbel::Translators::Base.new }
-  let(:service)      { Babbel::Services::TranslationService.new(translator) }
+  let(:translator_class) { Babbel::Translators::Base }
+  let(:translator)   { translator_class.new }
+  let(:service)      { Babbel::Services::TranslationService.new(translator_class) }
   let(:translatable) { ServiceModel.new column1: "translatable text", column2: "more text", language: :en }
 
   before do
     ServiceModel.class_eval "acts_as_translatable on: [:column1, :column2]"
     include_translatable ServiceModel
-    translator.stubs(:ready?).returns(true)
+    translator_class.stubs(:ready?).returns(true)
     translator.stubs(:can_translate?).returns(true)
     translator.stubs(:translate).returns(true)
   end
 
   describe "initialize" do
     it "sets a translator object on initialize" do
-      assert_equal service.translator, translator
+      assert_equal service.translator.class, translator.class
     end
     it "raises an error on initialize if translator is not ready" do
-      translator.stubs(:ready?).returns(false)
+      translator_class.stubs(:ready?).returns(false)
       ->{ service }.must_raise Babbel::Services::InvalidTranslatorError
     end
   end
@@ -62,7 +63,7 @@ class BabbelTranslationServiceTest < UnitTest
     it "does not build an invalid translation" do
       translator.stubs(:can_translate?).returns(false)
       service.translate_field(translatable, :column1)
-      assert_equal translatable.translations.size, 0      
+      assert_equal translatable.translations.size, 0
     end
   end
 

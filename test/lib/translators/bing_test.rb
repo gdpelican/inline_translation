@@ -6,28 +6,29 @@ require 'bing_translator'
 class BingTest < UnitTest
   describe Babbel::Translators::Bing do
 
-    let(:translator) { Babbel::Translators::Bing.new }
+    let(:translator_class) { Babbel:: Translators::Bing }
+    let(:translator) { translator_class.new }
 
     before do
       setup_bing_translator_env
     end
 
-    it "initializes a BingTranslator" do 
+    it "initializes a BingTranslator" do
       assert_instance_of BingTranslator, translator.translator
     end
 
     it "returns ready if ENV variables are set" do
-      assert translator.ready?
+      assert translator_class.ready?
     end
 
     it "returns not ready if app id is not set" do
       ENV['BING_TRANSLATOR_APP_ID'] = nil
-      refute translator.ready?
+      refute translator_class.ready?
     end
 
     it "returns not ready if secret is not set" do
       ENV['BING_TRANSLATOR_SECRET'] = nil
-      refute translator.ready?
+      refute translator_class.ready?
     end
 
     it "can translate a translatable" do

@@ -12,7 +12,7 @@ class TranslatableTest < UnitTest
 
     it "has_many translations" do
       assert_respond_to model, :translations
-      assert_instance_of Translation, model.translations.build
+      assert_instance_of Babbel::Models::Translation, model.translations.build
     end
 
     it "destroys translations after update" do
@@ -23,7 +23,7 @@ class TranslatableTest < UnitTest
       model.update! column1: "changed text"
       model.save
 
-      assert_equal model.reload.translations.size, 0      
+      assert_equal model.reload.translations.size, 0
     end
 
   end

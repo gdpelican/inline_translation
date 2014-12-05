@@ -19,13 +19,13 @@ class TranslationsHelperTest < UnitTest
 
     it "returns a link with a specified locale" do
       I18n.locale = :en
-      assert_match /a href/, translate_link_for(model, to: :fr)
+      assert_match /\?to=fr/, translate_link_for(model, to: :fr)
     end
 
     it "defaults to 'Translate' for link text" do
       assert_match /Translate/, translate_link_for(model)
     end
- 
+
     it "accepts a text parameter" do
       assert_match /Other text/, translate_link_for(model, text: 'Other text')
     end
