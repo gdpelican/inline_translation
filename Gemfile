@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails', '~> 4.1.0'
-gem 'bing_translator'
+gem 'bing_translator', '~> 4.4.0'
 
 group :development, :test do
   gem 'byebug', require: nil

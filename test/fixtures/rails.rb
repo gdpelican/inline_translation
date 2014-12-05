@@ -19,6 +19,9 @@ module Rails
     ActiveSupport::BacktraceCleaner.new
   end
 
+  class Engine
+  end
+
   private
 
   def self.routes

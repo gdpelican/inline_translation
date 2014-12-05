@@ -3,7 +3,7 @@ module Babbel
     module Translatable
       extend ActiveSupport::Concern
       included do
-        has_many :translations, as: :translatable
+        has_many :translations, as: :translatable, class_name: 'Babbel::Models::Translation'
         before_update :destroy_modified_translations
 
         private

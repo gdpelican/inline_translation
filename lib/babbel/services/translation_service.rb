@@ -3,9 +3,9 @@ module Babbel
     class TranslationService
       attr_reader :translator
 
-      def initialize(translator = Babbel.translator)
-        raise InvalidTranslatorError.new unless translator.ready?
-        @translator = translator
+      def initialize(translator_class = Babbel.translator)
+        raise InvalidTranslatorError.new unless translator_class.ready?
+        @translator = translator_class.new
       end
 
       def translate(translatable, to: I18n.locale)

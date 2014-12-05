@@ -6,7 +6,7 @@ module Babbel
       include ActionView::Helpers
 
       def translate_link_for(translatable, to: I18n.locale, text: "Translate")
-        link_to text, path_for(translatable, to) if translatable.language != to
+        link_to text, path_for(translatable, to), method: :post, remote: true if translatable.language != to
       end
 
       def translated_element_for(translatable, field, element: :span, to: I18n.locale)
@@ -16,12 +16,11 @@ module Babbel
       private
 
       def path_for(translatable, to)
-        translations_path translatable_id: translatable.id, 
-                          translatable_type: translatable.class.to_s, 
+        translations_path translatable_id: translatable.id,
+                          translatable_type: translatable.class.to_s,
                           to: to,
-                          action: :create,
-                          remote: true
-      end
+                          action: :create
+        end
     end
   end
 end

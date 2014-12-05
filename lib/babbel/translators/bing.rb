@@ -1,13 +1,15 @@
+require 'bing_translator'
+
 module Babbel
   module Translators
   	class Bing < Base
 
-      def initialize
-        @translator = BingTranslator.new ENV['BING_TRANSLATOR_APP_ID'], ENV['BING_TRANSLATOR_SECRET']
+      def self.ready?
+        ENV['BING_TRANSLATOR_APP_ID'] && ENV['BING_TRANSLATOR_SECRET'] && true
       end
 
-      def ready?
-        ENV['BING_TRANSLATOR_APP_ID'] && ENV['BING_TRANSLATOR_SECRET'] && true
+      def initialize
+        @translator = ::BingTranslator.new ENV['BING_TRANSLATOR_APP_ID'], ENV['BING_TRANSLATOR_SECRET']
       end
 
       def translate(text, from: nil, to: I18n.locale)

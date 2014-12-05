@@ -1,4 +1,5 @@
 require 'active_support'
+require 'babbel/engine'
 
 module Babbel
   extend ActiveSupport::Autoload
@@ -15,7 +16,7 @@ module Babbel
   end
 
   module Generators
-    autoload :InstallGenerator,   'babbel/generators/install/install_generator'
+    autoload :InstallGenerator,   'generators/install/install_generator'
   end
 
   module Helpers

@@ -3,12 +3,12 @@ module Babbel
     class Base
       attr_reader :translator
 
-      def ready?
+      def self.ready?
         false
       end
 
       def can_translate?(translatable, field, to)
-        ready? &&
+        self.class.ready? &&
         to.present? &&
         translatable.respond_to?(field) &&
         translatable.language_field.present? &&

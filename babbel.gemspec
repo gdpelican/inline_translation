@@ -16,6 +16,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir["test/**/*.rb"]
   spec.require_paths = ["app", "lib", "test"]
 
+  spec.add_runtime_dependency "bing_translator", "~> 4.4.0"
+  spec.add_runtime_dependency "rails", "~> 4.1.0"
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
 end

@@ -1,8 +1,8 @@
 require 'test_helper'
-require 'babbel/generators/install/install_generator'
+require 'generators/babbel/install/install_generator'
 
 class BabbelGeneratorInstallTest < Rails::Generators::TestCase
-  tests Babbel::Generators::InstallGenerator
+  tests Babbel::InstallGenerator
   setup_destination
 
   test "generates a migration file" do
