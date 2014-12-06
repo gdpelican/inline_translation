@@ -25,6 +25,8 @@ require 'test_types/integration_test'
 
 require 'babbel'
 
+I18n.enforce_available_locales = false
+
 def setup_destination
   destination File.expand_path '../../../tmp', __FILE__
   setup :prepare_destination
