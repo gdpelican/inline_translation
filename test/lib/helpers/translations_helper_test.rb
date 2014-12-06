@@ -14,7 +14,7 @@ class TranslationsHelperTest < UnitTest
 
   describe ".translate_link_for" do
     it "returns a link with another locale set" do
-      assert_match /a href/, translate_link_for(model)
+      assert_match /\?to=fr/, translate_link_for(model)
     end
 
     it "returns a link with a specified locale" do

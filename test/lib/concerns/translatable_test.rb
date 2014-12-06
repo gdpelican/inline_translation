@@ -3,7 +3,7 @@ require 'test_helper'
 class TranslatableTest < UnitTest
   describe Babbel::Concerns::Translatable do
 
-    let(:model) { ConcernModel.new column1: "test text" }
+    let(:model) { ConcernModel.create column1: "test text" }
 
     before do
       setup_model :concern_model

@@ -9,7 +9,7 @@ class NullTest < UnitTest
     let(:translator) { translator_class.new }
 
     it "returns ready as true" do
-      assert translator.ready?
+      assert translator_class.ready?
     end
 
     it "returns nil as a translation" do

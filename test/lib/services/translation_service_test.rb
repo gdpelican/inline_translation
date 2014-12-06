@@ -7,7 +7,6 @@ class BabbelTranslationServiceTest < UnitTest
   setup_translation
 
   let(:translator_class) { Babbel::Translators::Base }
-  let(:translator)   { translator_class.new }
   let(:service)      { Babbel::Services::TranslationService.new(translator_class) }
   let(:translatable) { ServiceModel.new column1: "translatable text", column2: "more text", language: :en }
 
@@ -15,17 +14,17 @@ class BabbelTranslationServiceTest < UnitTest
     ServiceModel.class_eval "acts_as_translatable on: [:column1, :column2]"
     include_translatable ServiceModel
     translator_class.stubs(:ready?).returns(true)
-    translator.stubs(:can_translate?).returns(true)
-    translator.stubs(:translate).returns(true)
+    service.translator.stubs(:can_translate?).returns(true)
+    service.translator.stubs(:translate).returns("translation")
   end
 
   describe "initialize" do
     it "sets a translator object on initialize" do
-      assert_equal service.translator.class, translator.class
+      assert_equal service.translator.class, translator_class
     end
     it "raises an error on initialize if translator is not ready" do
       translator_class.stubs(:ready?).returns(false)
-      ->{ service }.must_raise Babbel::Services::InvalidTranslatorError
+      ->{ Babbel::Services::TranslationService.new(translator_class) }.must_raise Babbel::Services::InvalidTranslatorError
     end
   end
 
@@ -49,7 +48,7 @@ class BabbelTranslationServiceTest < UnitTest
     end
 
     it "does not build an invalid translation" do
-      translator.stubs(:can_translate?).returns(false)
+      service.translator.stubs(:can_translate?).returns(false)
       service.translate!(translatable)
       assert_equal translatable.translations.size, 0
     end
@@ -61,7 +60,7 @@ class BabbelTranslationServiceTest < UnitTest
       assert_equal translatable.translations.size, 1
     end
     it "does not build an invalid translation" do
-      translator.stubs(:can_translate?).returns(false)
+      service.translator.stubs(:can_translate?).returns(false)
       service.translate_field(translatable, :column1)
       assert_equal translatable.translations.size, 0
     end
