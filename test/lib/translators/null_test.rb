@@ -1,11 +1,11 @@
 require 'test_helper'
-require 'babbel/translators/base'
-require 'babbel/translators/null'
+require 'inline_translation/translators/base'
+require 'inline_translation/translators/null'
 
 class NullTest < UnitTest
-  describe Babbel::Translators::Null do
+  describe InlineTranslation::Translators::Null do
 
-    let(:translator_class) { Babbel::Translators::Null }
+    let(:translator_class) { InlineTranslation::Translators::Null }
     let(:translator) { translator_class.new }
 
     it "returns ready as true" do

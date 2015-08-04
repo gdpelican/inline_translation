@@ -1,11 +1,11 @@
 require 'test_helper'
-require 'babbel/models/translation'
+require 'inline_translation/models/translation'
 
 class TranslationTest < UnitTest
-  describe Babbel::Models::Translation do
+  describe InlineTranslation::Models::Translation do
 
     setup_model :model_class
-    let(:translation) { Babbel::Models::Translation.new translatable: ModelClass.new, 
+    let(:translation) { InlineTranslation::Models::Translation.new translatable: ModelClass.new,
                                                         language: :en,
                                                         field: :field_name,
                                                         translation: :translation }
@@ -49,7 +49,7 @@ class TranslationTest < UnitTest
     it "should require a translation" do
       translation.translation = nil
       refute translation.valid?
-    end 
+    end
 
   end
 end

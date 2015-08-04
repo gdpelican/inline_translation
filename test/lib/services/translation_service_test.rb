@@ -1,13 +1,13 @@
 require 'test_helper'
-require 'babbel/services/translation_service'
-require 'babbel/models/translation'
+require 'inline_translation/services/translation_service'
+require 'inline_translation/models/translation'
 
-class BabbelTranslationServiceTest < UnitTest
+class InlineTranslationTranslationServiceTest < UnitTest
   setup_model :service_model
   setup_translation
 
-  let(:translator_class) { Babbel::Translators::Base }
-  let(:service)      { Babbel::Services::TranslationService.new(translator_class) }
+  let(:translator_class) { InlineTranslation::Translators::Base }
+  let(:service)      { InlineTranslation::Services::TranslationService.new(translator_class) }
   let(:translatable) { ServiceModel.new column1: "translatable text", column2: "more text", language: :en }
 
   before do
@@ -24,13 +24,13 @@ class BabbelTranslationServiceTest < UnitTest
     end
     it "raises an error on initialize if translator is not ready" do
       translator_class.stubs(:ready?).returns(false)
-      ->{ Babbel::Services::TranslationService.new(translator_class) }.must_raise Babbel::Services::InvalidTranslatorError
+      ->{ InlineTranslation::Services::TranslationService.new(translator_class) }.must_raise InlineTranslation::Services::InvalidTranslatorError
     end
   end
 
   describe "invalid translator error" do
     it "has an error message" do
-      assert_match /Unable to instantiate translator/, Babbel::Services::InvalidTranslatorError.new.to_s
+      assert_match /Unable to instantiate translator/, InlineTranslation::Services::InvalidTranslatorError.new.to_s
     end
   end
 

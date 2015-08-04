@@ -1,4 +1,4 @@
-module Babbel
+module InlineTranslation
   module Translators
     class Null < Base
 

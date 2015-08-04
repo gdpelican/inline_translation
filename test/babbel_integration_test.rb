@@ -1,15 +1,15 @@
 require 'test_helper'
-class BabbelIntegrationTest < IntegrationTest
-  describe Babbel do
+class InlineTranslationIntegrationTest < IntegrationTest
+  describe InlineTranslation do
     setup_model :integration_model
 
     let(:model) { IntegrationModel.create! column1: "column one", column2: "column2", language: :en }
 
     setup do
-      @controller ||= Babbel::Controllers::TranslationsController.new
+      @controller ||= InlineTranslation::Controllers::TranslationsController.new
       IntegrationModel.acts_as_translatable on: [:column1, :column2]
-      Babbel::Translators::Null.stubs(:ready?).returns(true)
-      Babbel::Translators::Null.any_instance.stubs(:translate).returns("this is a translation", "this is another translation")
+      InlineTranslation::Translators::Null.stubs(:ready?).returns(true)
+      InlineTranslation::Translators::Null.any_instance.stubs(:translate).returns("this is a translation", "this is another translation")
     end
 
     describe "creating translations" do

@@ -1,11 +1,11 @@
 require 'test_helper'
-require 'babbel/translators/base'
+require 'inline_translation/translators/base'
 
 class BaseTest < UnitTest
-  describe Babbel::Translators::Base do
+  describe InlineTranslation::Translators::Base do
     setup_model :translator_model
 
-    let(:translator_class) { Babbel::Translators::Base }
+    let(:translator_class) { InlineTranslation::Translators::Base }
     let(:translator) { translator_class.new }
     let(:translatable) { TranslatorModel.new column1: "column one", language: :en }
 

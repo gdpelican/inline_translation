@@ -1,12 +1,12 @@
 require 'test_helper'
-require 'babbel/translators/base'
-require 'babbel/translators/bing'
+require 'inline_translation/translators/base'
+require 'inline_translation/translators/bing'
 require 'bing_translator'
 
 class BingTest < UnitTest
-  describe Babbel::Translators::Bing do
+  describe InlineTranslation::Translators::Bing do
 
-    let(:translator_class) { Babbel:: Translators::Bing }
+    let(:translator_class) { InlineTranslation:: Translators::Bing }
     let(:translator) { translator_class.new }
 
     before do

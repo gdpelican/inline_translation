@@ -1,6 +1,6 @@
 require 'bing_translator'
 
-module Babbel
+module InlineTranslation
   module Translators
   	class Bing < Base
 

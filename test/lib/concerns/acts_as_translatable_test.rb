@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ActsAsTranslatableTest < UnitTest
-  describe Babbel::Concerns::ActsAsTranslatable do
+  describe InlineTranslation::Concerns::ActsAsTranslatable do
 
     before do
       setup_model :concern_model
@@ -10,7 +10,7 @@ class ActsAsTranslatableTest < UnitTest
 
     it "includes Translatable" do
       ConcernModel.class_eval "acts_as_translatable on: [:column1, :column2]"
-      assert ConcernModel.included_modules.include?(Babbel::Concerns::Translatable)
+      assert ConcernModel.included_modules.include?(InlineTranslation::Concerns::Translatable)
     end
 
     it "defines a translatable_fields class method" do

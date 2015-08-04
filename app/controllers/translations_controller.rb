@@ -1,4 +1,4 @@
-module Babbel
+module InlineTranslation
   module Controllers
     class TranslationsController < ::ApplicationController
 
@@ -27,7 +27,7 @@ module Babbel
       end
 
       def service
-        @service ||= Babbel::Services::TranslationService.new
+        @service ||= InlineTranslation::Services::TranslationService.new
       end
 
       def instance

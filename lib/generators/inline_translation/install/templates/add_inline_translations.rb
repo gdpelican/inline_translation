@@ -1,4 +1,4 @@
-class AddBabbelTranslations < ActiveRecord::Migration
+class AddInlineTranslationTranslations < ActiveRecord::Migration
   def self.up
     create_table :translations do |t|
       t.integer :translatable_id

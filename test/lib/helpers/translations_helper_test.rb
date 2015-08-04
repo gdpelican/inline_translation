@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TranslationsHelperTest < UnitTest
-  include Babbel::Helpers::TranslationsHelper
+  include InlineTranslation::Helpers::TranslationsHelper
   include Rails.application.routes.url_helpers
 
   setup_model :helper_model
@@ -49,8 +49,8 @@ class TranslationsHelperTest < UnitTest
       assert_match /column1-translated/, translated_element_for(model, :column1)
     end
 
-    it "returns a span with a babbel class" do
-      assert_match /babbel-translated/, translated_element_for(model, :column1)
+    it "returns a span with a InlineTranslation class" do
+      assert_match /InlineTranslation-translated/, translated_element_for(model, :column1)
     end
 
     it "accepts an element parameter" do

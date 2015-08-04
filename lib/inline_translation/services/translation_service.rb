@@ -1,9 +1,9 @@
-module Babbel
+module InlineTranslation
   module Services
     class TranslationService
       attr_reader :translator
 
-      def initialize(translator_class = Babbel.translator)
+      def initialize(translator_class = InlineTranslation.translator)
         raise InvalidTranslatorError.new unless translator_class.ready?
         @translator = translator_class.new
       end

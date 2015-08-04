@@ -1,4 +1,4 @@
-module Babbel
+module InlineTranslation
   module Models
     class Translation < ActiveRecord::Base
       belongs_to :translatable, polymorphic: true

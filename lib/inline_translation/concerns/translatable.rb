@@ -1,9 +1,9 @@
-module Babbel
+module InlineTranslation
   module Concerns
     module Translatable
       extend ActiveSupport::Concern
       included do
-        has_many :translations, as: :translatable, class_name: 'Babbel::Models::Translation'
+        has_many :translations, as: :translatable, class_name: 'InlineTranslation::Models::Translation'
         before_update :destroy_modified_translations
 
         private

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TranslatableTest < UnitTest
-  describe Babbel::Concerns::Translatable do
+  describe InlineTranslation::Concerns::Translatable do
 
     let(:model) { ConcernModel.create column1: "test text" }
 
@@ -12,7 +12,7 @@ class TranslatableTest < UnitTest
 
     it "has_many translations" do
       assert_respond_to model, :translations
-      assert_instance_of Babbel::Models::Translation, model.translations.build
+      assert_instance_of InlineTranslation::Models::Translation, model.translations.build
     end
 
     it "destroys translations after update" do

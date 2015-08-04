@@ -1,6 +1,6 @@
-# Babbel
+# Inline Translation
 
-Babbel is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
+`inline_translation` is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
 
 It's written as a wrapper for the fine [bing_translator gem](https://github.com/relrod/bing_translator-gem), but can be easily extended to using other translation services.
 
@@ -9,7 +9,7 @@ It's written as a wrapper for the fine [bing_translator gem](https://github.com/
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'babbel'
+gem 'inline_translation'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Then, execute the install generator
 
-    $ rails g babbel:install
+    $ rails g inline_translation:install
 
 And migrate
 
@@ -28,7 +28,7 @@ Now you're all set up!
 
 ## Usage
 
-Babbel supplies several helper methods to make your translating life easier.
+Inline Translation supplies several helper methods to make your translating life easier.
 
 To mark a field on an object as translatable, simply add
 
@@ -38,15 +38,15 @@ to your model.
 
 #### Additional options
 
-**load_via** - the class method used to find a record for your model. Defaults to `:find`
-**id_field** - field name for the unique identifier for your model. Defaults to `:id`
-**language_field** - field name for the method / column name on your model to retrieve the language. Defaults to `language`
+- **load_via** - the class method used to find a record for your model. Defaults to `:find`
+- **id_field** - field name for the unique identifier for your model. Defaults to `:id`
+- **language_field** - field name for the method / column name on your model to retrieve the language. Defaults to `language`
 
 NB: Oftentimes, you may wish to delegate this method to a user or other object, instead of storing the language on every model.
 
 For example:
 
-```
+```ruby
 # model.rb
 class Model < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
@@ -55,31 +55,32 @@ class Model < ActiveRecord::Base
   def language
     user.locale
   end
+end
 ```
 
 ## On the frontend
 
-Babbel provides a simple helper method for translation links in the view.
+InlineTranslation provides a simple helper method for translation links in the view.
 
 For example, adding
 
-`translate_link_for(@model, to: :fr)`
+```ruby
+translate_link_for(@model, to: :fr)
+```
 
 Will add an ajax link to create and store a French translation. The `to` field will default to I18n.locale.
 
 #### Additional options
 
-**text** - The text of the anchor generated. Defaults to 'Translate'
+- **text** - The text of the anchor generated. Defaults to 'Translate'
 
 ## On the backend
 
-Babbel uses the Bing Translator API as a default. For instructions on setting up the Bing Translator API, [go here](https://github.com/relrod/bing_translator-gem#getting-a-client-id-and-secret).
+InlineTranslation uses the Bing Translator API as a default. For instructions on setting up the Bing Translator API, [go here](https://github.com/relrod/bing_translator-gem#getting-a-client-id-and-secret).
 
 ## Different Translators
 
-Babbel uses the Bing Translator as a default translator, you can very easily write yous  own.
-
-Simply change the line in `config/initializers/babbel.rb` to use whatever translator you desire.
+Simply change the line in `config/initializers/inline_translation.rb` to use whatever translator you desire.
 
 Note that a custom translator must implement the following methods:
 
@@ -89,7 +90,7 @@ Note that a custom translator must implement the following methods:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/babbel/fork )
+1. Fork it ( https://github.com/[my-github-username]/inline_translation/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

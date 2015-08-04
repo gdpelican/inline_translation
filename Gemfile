@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in babbel.gemspec
+# Specify your gem's dependencies in InlineTranslation.gemspec
 gemspec
 
 gem 'rails', '~> 4.1.0'
@@ -10,6 +10,7 @@ group :development, :test do
   gem 'byebug', require: nil
   gem 'temping'
   gem 'mocha'
+  gem 'sqlite3'
 end
 
 group :test do

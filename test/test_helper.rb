@@ -23,7 +23,7 @@ require 'test_types/unit_test'
 require 'test_types/controller_test'
 require 'test_types/integration_test'
 
-require 'babbel'
+require 'inline_translation'
 
 I18n.enforce_available_locales = false
 
@@ -35,10 +35,10 @@ end
 def setup_model(model = :test_model)
   constantized = model.to_s.split("_").collect(&:capitalize).join
   unless Object.const_defined?(constantized)
-    Temping.create model do 
-      with_columns do |t| 
+    Temping.create model do
+      with_columns do |t|
         t.integer :id_alt
-        t.string :column1, :column2, :language, :language_alt 
+        t.string :column1, :column2, :language, :language_alt
       end
     end
     include_acts_as_translatable Object.const_get(constantized)
@@ -66,9 +66,9 @@ def setup_bing_translator_env
 end
 
 def include_acts_as_translatable(model)
-  model.class_eval "include Babbel::Concerns::ActsAsTranslatable"
+  model.class_eval "include InlineTranslation::Concerns::ActsAsTranslatable"
 end
 
 def include_translatable(model)
-  model.class_eval "include Babbel::Concerns::Translatable"
+  model.class_eval "include InlineTranslation::Concerns::Translatable"
 end

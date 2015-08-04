@@ -1,6 +1,6 @@
 require 'action_view/helpers'
 
-module Babbel
+module InlineTranslation
   module Helpers
     module TranslationsHelper
       include ActionView::Helpers
@@ -10,7 +10,7 @@ module Babbel
       end
 
       def translated_element_for(translatable, field, element: :span, to: I18n.locale)
-        content_tag element, '', class: "#{field}-translated to-#{to} babbel-translated"
+        content_tag element, '', class: "#{field}-translated to-#{to} InlineTranslation-translated"
       end
 
       private
