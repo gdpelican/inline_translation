@@ -22,7 +22,7 @@ Then, execute the install generator
 
 And migrate
 
-    $rake db:migrate
+    $ rake db:migrate
 
 Now you're all set up!
 
@@ -36,7 +36,26 @@ To mark a field on an object as translatable, simply add
 
 to your model.
 
-TODO: Add more detail about `acts_as_translatable` options
+#### Additional options
+
+**load_via** - the class method used to find a record for your model. Defaults to `:find`
+**id_field** - field name for the unique identifier for your model. Defaults to `:id`
+**language_field** - field name for the method / column name on your model to retrieve the language. Defaults to `language`
+
+NB: Oftentimes, you may wish to delegate this method to a user or other object, instead of storing the language on every model.
+
+For example:
+
+```
+# model.rb
+class Model < ActiveRecord::Base
+  belongs_to :author, class_name: 'User'
+  acts_as_translatable on: :column
+
+  def language
+    user.locale
+  end
+```
 
 ## On the frontend
 
@@ -48,7 +67,9 @@ For example, adding
 
 Will add an ajax link to create and store a French translation. The `to` field will default to I18n.locale.
 
-TODO: Add more details about `translate_link_for` options
+#### Additional options
+
+**text** - The text of the anchor generated. Defaults to 'Translate'
 
 ## On the backend
 
