@@ -17,6 +17,13 @@ module InlineTranslation
         translatable.save
       end
 
+      def translations_for(translatable, to: I18n.locale)
+        translatable.translations.to_language(to).reduce({}) do |result, translation|
+          result[translation.field] = translation.translation
+          result
+        end
+      end
+
       def translate_field(translatable, field, to: I18n.locale)
         translatable.translations.build(
           field: field,
