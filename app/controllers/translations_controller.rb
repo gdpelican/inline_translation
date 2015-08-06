@@ -3,7 +3,7 @@ module InlineTranslation
     class TranslationsController < ::ApplicationController
 
       def create
-        if service.translate instance, to: to_language
+        if service.translate(instance, to: to_language)
           success_response
         else
           failure_response
@@ -13,7 +13,11 @@ module InlineTranslation
       protected
 
       def success_response
-        head :ok
+        render json: {
+          translations: service.translations_for(instance),
+          translatable_id:   params[:translatable_id],
+          translatable_type: params[:translatable_type]
+        }
       end
 
       def failure_response
