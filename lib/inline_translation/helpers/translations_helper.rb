@@ -10,7 +10,7 @@ module InlineTranslation
       end
 
       def translated_element_for(translatable, field, element: :span, to: I18n.locale)
-        content_tag element, '', class: "#{field}-translated to-#{to} InlineTranslation-translated"
+        content_tag element, '', class: "#{field}-translated to-#{to} inline-translation-translated"
       end
 
       private

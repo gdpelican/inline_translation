@@ -14,11 +14,11 @@ class TranslationsControllerTest < ControllerTest
     end
 
     describe "POST create" do
-      it "returns the translation for successful translation" do
+      it "returns the translation for successful translation for JS" do
         InlineTranslation.stubs(:ready?).returns(true)
         InlineTranslation::Translators::Null.any_instance.stubs(:can_translate?).returns(true)
         InlineTranslation::Translators::Null.any_instance.stubs(:translate).returns("A translation!")
-        post :create, translatable_type: "ControllerModel", translatable_id: translatable.id
+        post :create, translatable_type: "ControllerModel", translatable_id: translatable.id, format: :js
 
         assert_equal response.status, 200
         json = JSON.parse(response.body)
@@ -28,6 +28,17 @@ class TranslationsControllerTest < ControllerTest
         assert_equal json['translatable_id'], translatable.id.to_s
         assert_equal json['translatable_type'], 'ControllerModel'
       end
+
+      it "returns the translation for successful translation for JSON" do
+        InlineTranslation.stubs(:ready?).returns(true)
+        InlineTranslation::Translators::Null.any_instance.stubs(:can_translate?).returns(true)
+        InlineTranslation::Translators::Null.any_instance.stubs(:translate).returns("A translation!")
+        post :create, translatable_type: "ControllerModel", translatable_id: translatable.id, format: :json
+
+        assert_equal response.status, 200
+        assert_template 'translations/create'
+      end
+
 
       it "returns unprocessable entity for unsuccessful translation" do
         InlineTranslation::Services::TranslationService.any_instance.stubs(:translate).returns(false)
