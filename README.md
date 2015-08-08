@@ -53,7 +53,7 @@ class Model < ActiveRecord::Base
   acts_as_translatable on: :column
 
   def language
-    user.locale
+    author.locale
   end
 end
 ```
