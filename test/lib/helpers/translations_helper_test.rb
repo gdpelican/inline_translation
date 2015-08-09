@@ -50,7 +50,7 @@ class TranslationsHelperTest < UnitTest
     end
 
     it "returns a span with a InlineTranslation class" do
-      assert_match /InlineTranslation-translated/, translated_element_for(model, :column1)
+      assert_match /inline-translation-translated/, translated_element_for(model, :column1)
     end
 
     it "accepts an element parameter" do

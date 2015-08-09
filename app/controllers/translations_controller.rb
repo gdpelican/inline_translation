@@ -5,7 +5,10 @@ module InlineTranslation
 
       def create
         if service.translate(translatable, to: to_language)
-          respond_with translations
+          respond_to do |format|
+            format.js { translations; render :create }
+            format.json { render json: translations }
+          end
         else
           failure_response
         end

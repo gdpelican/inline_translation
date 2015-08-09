@@ -14,7 +14,7 @@ class InlineTranslationIntegrationTest < IntegrationTest
 
     describe "creating translations" do
       it "can create translations" do
-        post :create, translatable_type: "IntegrationModel", translatable_id: model.id, to: :fr
+        post :create, translatable_type: "IntegrationModel", translatable_id: model.id, to: :fr, format: :json
 
         created = Translation.where(translatable_type: "IntegrationModel")
 
@@ -23,6 +23,11 @@ class InlineTranslationIntegrationTest < IntegrationTest
         assert_equal created.where(translatable_type: "IntegrationModel").size, 2
         assert_equal created.where(translation: "this is a translation").size, 1
         assert_equal created.where(translation: "this is another translation").size, 1
+
+
+        before_count = Translation.count
+        post :create, translatable_type: "IntegrationModel", translatable_id: model.id, to: :fr, format: :json
+        assert_equal Translation.count, before_count
       end
     end
   end
