@@ -34,21 +34,6 @@ class InlineTranslationTranslationServiceTest < UnitTest
     end
   end
 
-  describe "translations_for" do
-    it "returns the translations for a given translatable" do
-      translatable.save
-      translatable.translations.create field: :column1, translation: 'Bon oui!', language: :fr
-      translatable.translations.create field: :column2, translation: 'Mon ser!', language: :fr
-      result = service.translations_for(translatable, to: :fr)
-
-      assert_equal result[:translatable_id], translatable.id
-      assert_equal result[:translatable_type], translatable.class.to_s
-      translatable.translations.each do |translation|
-        assert_equal result[:translations][translation.field], translation.translation
-      end
-    end
-  end
-
   describe "translate" do
     it "returns the results of translate!" do
       service.stubs(:translate!).returns("translation result")

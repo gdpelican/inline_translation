@@ -12,6 +12,10 @@ module InlineTranslation
       copy_file "inline_translation.rb", "config/initializers/inline_translation.rb"
     end
 
+    def copy_js_view
+      copy_file "create.js.erb", "app/views/translations/create.js.erb"
+    end
+
     def self.next_migration_number(path)
       @previous_migration_nr ||= Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
       @previous_migration_nr += 1

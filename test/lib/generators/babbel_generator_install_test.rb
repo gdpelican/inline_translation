@@ -14,4 +14,9 @@ class InlineTranslationGeneratorInstallTest < Rails::Generators::TestCase
     run_generator
     assert_file "config/initializers/inline_translation.rb"
   end
+
+  test "generates a create js view file" do
+    run_generator
+    assert_file "app/views/translations/create.js.erb"
+  end
 end

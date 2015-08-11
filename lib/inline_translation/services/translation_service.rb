@@ -17,15 +17,6 @@ module InlineTranslation
         translatable.save
       end
 
-      def translations_for(translatable, to: I18n.locale)
-        { translatable_id: translatable.id, translatable_type: translatable.class.to_s, translations: {} }.tap do |result|
-          translatable.translations.to_language(to).reduce(result[:translations]) do |translations, translation|
-            translations[translation.field] = translation.translation
-            translations
-          end
-        end
-      end
-
       def translate_field(translatable, field, to: I18n.locale)
         translatable.translations.build(
           field: field,

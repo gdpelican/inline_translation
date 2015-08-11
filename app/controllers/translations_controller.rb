@@ -5,9 +5,10 @@ module InlineTranslation
 
       def create
         if service.translate(translatable, to: to_language)
+          @translations = translatable.translations.where(language: to_language)
           respond_to do |format|
-            format.js { translations; render :create }
-            format.json { render json: translations }
+            format.js { render :create }
+            format.json { render json: @translations } # TODO: support for AMS / custom serialization
           end
         else
           failure_response
@@ -30,10 +31,6 @@ module InlineTranslation
 
       def translatable
         @translatable ||= params[:translatable_type].classify.constantize.get_instance params[:translatable_id] rescue nil
-      end
-
-      def translations
-        @translations ||= service.translations_for(translatable, to: to_language) || {}
       end
 
       def to_language

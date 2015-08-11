@@ -1,0 +1,4 @@
+target = $('#<%= @translatable.class.to_s.downcase %>-<%= @translatable.id %>')
+<% @translations.each do |translation| %>
+  target.find('.inline-translation-translated.<%= translation.field %>-translated').html("<%= j translation.translation %>")
+<% end %>
