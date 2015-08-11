@@ -1,8 +1,10 @@
 # Inline Translation
 
-`inline_translation` is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
+`InlineTranslation` is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
 
-It's written as a wrapper for the fine [bing_translator gem](https://github.com/relrod/bing_translator-gem), but can be easily extended to using other translation services.
+It provides automatic caching (and cache-busting!) mechanisms to ensure you never have to request a translation twice, or serve up a stale translation.
+
+It's written as a wrapper for the fine [bing_translator gem](https://github.com/relrod/bing_translator-gem), but can be easily extended to using other translation services with a little elbow grease.
 
 ## Demo
 
