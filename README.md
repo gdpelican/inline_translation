@@ -4,6 +4,10 @@
 
 It's written as a wrapper for the fine [bing_translator gem](https://github.com/relrod/bing_translator-gem), but can be easily extended to using other translation services.
 
+## Demo
+
+Check out the example app [here](http://inline-translation-test.herokuapp.com)
+
 ## Installation
 
 Add this line to your application's Gemfile:
