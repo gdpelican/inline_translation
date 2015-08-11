@@ -1,5 +1,7 @@
 # Inline Translation
 
+[![Code Climate](https://img.shields.io/codeclimate/github/gdpelican/inline_translation.svg)](https://codeclimate.com/github/loomio/loomio) 
+
 `InlineTranslation` is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
 
 It provides automatic caching (and cache-busting!) mechanisms to ensure you never have to request a translation twice, or serve up a stale translation.
