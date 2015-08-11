@@ -11,7 +11,6 @@ group :development, :test do
   gem 'temping'
   gem 'mocha'
   gem 'sqlite3'
-  gem 'byebug'
 end
 
 group :test do
