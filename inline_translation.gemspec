@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Store on-the-fly translations using Bing (or others!)"
   spec.description   = "Sets up a framework for allowing inline translation of database content"
-  spec.homepage      = "http://www.github.com/gdpelican/inline_translation"
+  spec.homepage      = "https://github.com/gdpelican/inline_translation"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
