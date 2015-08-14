@@ -20,7 +20,7 @@ module InlineTranslation
                           translatable_type: translatable.class.to_s,
                           to: to,
                           action: :create
-        end
+      end
     end
   end
 end

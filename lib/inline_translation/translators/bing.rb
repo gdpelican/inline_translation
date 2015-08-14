@@ -2,7 +2,7 @@ require 'bing_translator'
 
 module InlineTranslation
   module Translators
-  	class Bing < Base
+    class Bing < Base
 
       def self.ready?
         ENV['BING_TRANSLATOR_APP_ID'] && ENV['BING_TRANSLATOR_SECRET'] && true
@@ -16,6 +16,6 @@ module InlineTranslation
         @translator.translate text, from: from, to: to
       end
 
-  	end
+    end
   end
 end
