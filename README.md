@@ -1,4 +1,6 @@
 # Inline Translation
+
+[![Join the chat at https://gitter.im/gdpelican/inline_translation](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gdpelican/inline_translation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![Codeship](https://codeship.com/projects/50421e60-2297-0133-2512-365560d2eeeb/status?branch=master) [![Code Climate](https://img.shields.io/codeclimate/github/gdpelican/inline_translation.svg)](https://codeclimate.com/github/gdpelican/inline_translation)
 
 `InlineTranslation` is a gem which provides your application with a simple, easy-to-use way to perform inline translations of content, into a variety of languages.
